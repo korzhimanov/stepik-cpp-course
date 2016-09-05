@@ -19,7 +19,13 @@
 #include <stdlib.h>
 
 int ComputeTruangularNumber(long number) {
-  printf("Your number is: %ld\n", number);
+  int iterator = 0;
+  while (number > 0l) {
+    number = number - (iterator + 1);
+    iterator++;
+  }
+  if (number == 0) return iterator;
+  else return 0;
 }
 
 int main()
