@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1473084404 source:c:\users\artem\documents\github\stepik-cpp-course\nondecreasing-subsequance\main.cpp
+	<float.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+
