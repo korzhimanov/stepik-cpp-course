@@ -18,8 +18,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int ComputeTruangularNumber(long number) {
+  printf("Your number is: %ld\n", number);
+}
+
 int main()
 {
+long input = 0;
+
+    printf("Please, enter your number\n");
+    int err = scanf("%li", &input);
+
+    if (err != -1) {
+        return ComputeTruangularNumber(input);
+    }
+    else {
+        printf("Error! Code: %d\n", err);
+        return 0;
+    }
 
     return 0;
 }
