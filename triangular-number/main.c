@@ -15,33 +15,76 @@
  * положительных числовых, а также символьных / строковых) данных.
  */
 
+#include <limits.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int ComputeTruangularNumber(long number) {
-  int iterator = 0;
+uint64_t InputNumber() {
+  char input[22];
+  uint64_t number = 0l;
+
+  printf("Please, enter your number\n");
+  int err = scanf("%20s", input);
+  if (err == -1){
+      printf("Error!");
+      return err;
+  }
+  printf("%lld\n%s: %li\n", LONG_LONG_MAX, input, strlen(input));
+  if ((input[0] == '+' && strlen(input) > 20) || (input[0] != '+' && strlen(input) > 19)) {
+      printf("String too long!");
+      return 0;
+  }
+  if (input[0] == '-') {
+    printf("Number seems to be negative!\n");
+    return 0;
+  }
+  char *c = input;
+  if (*c == '+') c++;
+  if (strspn(c, "1234567890") != strlen(c)) {
+    printf("Seems that your input is not an integer number!\n");
+    return 0;
+  }
+
+  err = sscanf(input, "%llu", &number);
+
+  if (number > LONG_LONG_MAX) {
+    printf("Your number is too high!\n");
+    return 0;
+  }
+
+  if (err == -1){
+      printf("Error!");
+      return 0;
+  }
+
+  printf("Your number is: %llu\n", number);
+  return number;
+}
+
+long ComputeTriangularNumber(int64_t number) {
+  long iterator = 0l;
   while (number > 0l) {
     number = number - (iterator + 1);
     iterator++;
   }
-  if (number == 0) return iterator;
-  else return 0;
+  if (number == 0l) return iterator;
+  else return 0l;
 }
 
 int main()
 {
-long input = 0;
+  uint64_t number = InputNumber();
 
-    printf("Please, enter your number\n");
-    int err = scanf("%li", &input);
-
-    if (err != -1) {
-        return ComputeTruangularNumber(input);
-    }
-    else {
-        printf("Error! Code: %d\n", err);
-        return 0;
-    }
-
+  int err = 0;
+  if (err != -1) {
+    printf("It is # %ld in the sequence of triangular numbers.", ComputeTriangularNumber((int64_t)number));
+  }
+  else {
+    printf("error! code: %d\n", err);
     return 0;
+  }
+
+  return 0;
 }

@@ -1,5 +1,8 @@
 # depslib dependency file v1.0
-1473063789 source:c:\users\artem\documents\github\stepik-cpp-course\triangular-number\main.c
+1473076861 source:c:\users\artem\documents\github\stepik-cpp-course\triangular-number\main.c
+	<limits.h>
+	<stdint.h>
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 
